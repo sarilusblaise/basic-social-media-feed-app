@@ -1,30 +1,22 @@
 import React, { Children } from 'react'
+import { BrowserRouter as Router, Switch, Redirect } from 'react-router-dom'
 import {
-  BrowserRouter as Router,
-  Switch,
+  createBrowserRouter,
+  RouterProvider,
   Route,
-  Redirect,
-} from 'react-router-dom'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom-v5-compat'
+  createRoutesFromElements,
+} from 'react-router-dom-v5-compat'
 import './index.css'
 import { PostsList } from './features/posts/postsList'
 
 import { Navbar } from './app/Navbar'
-const router = createBrowserRouter([
-  {
-    element: <Navbar />,
-    children: [
-      {
-        path: '/',
-        element: (
-          <React.Fragment>
-            <PostsList />
-          </React.Fragment>
-        ),
-      },
-    ],
-  },
-])
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route element={<Navbar />}>
+      <Route path="/" element={<PostsList />} />
+    </Route>
+  )
+)
 
 function App() {
   return (
