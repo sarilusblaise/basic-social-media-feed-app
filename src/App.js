@@ -4,7 +4,10 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom-v5-compat'
 import './index.css'
 import { PostsList } from './features/posts/postsList'
 import { AddPostForm } from './features/posts/AddPostForm'
-
+import {
+  SinglePostPage,
+  loader as SinglePostPageLoader,
+} from './features/posts/SinglePostPage'
 import { Navbar } from './app/Navbar'
 const router = createBrowserRouter([
   {
@@ -18,6 +21,11 @@ const router = createBrowserRouter([
             <PostsList />
           </React.Fragment>
         ),
+      },
+      {
+        path: '/posts/:postId',
+        element: <SinglePostPage />,
+        loader: SinglePostPageLoader,
       },
     ],
   },

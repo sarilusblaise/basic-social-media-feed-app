@@ -1,8 +1,15 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
+import { useLoaderData } from 'react-router-dom-v5-compat'
 
-export const SinglePostPage = ({ match }) => {
-  const { postId } = match.params
+// react-router : for loading data in a route
+export function loader({ params }) {
+  const postId = params.postId
+  return { postId }
+}
+
+export const SinglePostPage = () => {
+  const postId = useLoaderData()
 
   const post = useSelector((state) =>
     state.posts.find((post) => post.id === postId)
