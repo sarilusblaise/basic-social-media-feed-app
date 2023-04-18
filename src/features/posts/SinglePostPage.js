@@ -9,7 +9,7 @@ export function loader({ params }) {
 }
 
 export const SinglePostPage = () => {
-  const postId = useLoaderData()
+  const { postId } = useLoaderData()
 
   const post = useSelector((state) =>
     state.posts.find((post) => post.id === postId)
