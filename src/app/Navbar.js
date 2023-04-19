@@ -1,5 +1,5 @@
 import React from 'react'
-import { Outlet } from 'react-router-dom-v5-compat'
+import { Outlet, Link } from 'react-router-dom-v5-compat'
 
 export const Navbar = () => {
   return (
@@ -9,7 +9,9 @@ export const Navbar = () => {
           <h1>Redux Essentials Example</h1>
 
           <div className="navContent">
-            <div className="navLinks"></div>
+            <div className="navLinks">
+              <Link to="/">Posts</Link>
+            </div>
           </div>
         </section>
       </nav>
