@@ -8,6 +8,10 @@ import {
   SinglePostPage,
   loader as SinglePostPageLoader,
 } from './features/posts/SinglePostPage'
+import {
+  EditPostForm,
+  loader as EditPostFormLoader,
+} from './features/posts/EditPostForm'
 import { Navbar } from './app/Navbar'
 const router = createBrowserRouter([
   {
@@ -26,6 +30,11 @@ const router = createBrowserRouter([
         path: '/posts/:postId',
         element: <SinglePostPage />,
         loader: SinglePostPageLoader,
+      },
+      {
+        path: '/editPost/:postId',
+        element: <EditPostForm />,
+        loader: EditPostFormLoader,
       },
     ],
   },

@@ -1,12 +1,15 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
+import { useLoaderData } from 'react-router-dom-v5-compat'
 
 import { postUpdated } from './postsSlice'
-
+export function loader({ params }) {
+  const postId = params.postId
+  return { postId }
+}
 export const EditPostForm = ({ match }) => {
-  const { postId } = match.params
-
+  const { postId } = useLoaderData()
   const post = useSelector((state) =>
     state.posts.find((post) => post.id === postId)
   )
