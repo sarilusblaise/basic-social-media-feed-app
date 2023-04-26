@@ -2,6 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { useLoaderData, Link } from 'react-router-dom-v5-compat'
 import { PostAuthor } from './PostAuthor'
+import { TimeAgo } from './TimeAgo'
 
 // react-router : for loading data in a route
 export function loader({ params }) {
@@ -30,6 +31,7 @@ export const SinglePostPage = () => {
         <h2>{post.title}</h2>
         <p className="post-content">{post.content}</p>
         <PostAuthor userId={post.user} />
+        <TimeAgo timestamp={post.date} />
         <Link to={`/editPost/${post.id}`} className="button">
           Edit Post
         </Link>
