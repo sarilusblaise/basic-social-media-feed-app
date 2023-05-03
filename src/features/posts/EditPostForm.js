@@ -2,13 +2,14 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { useLoaderData } from 'react-router-dom-v5-compat'
+import { useNavigate } from 'react-router-dom-v5-compat'
 
 import { postUpdated } from './postsSlice'
 export function loader({ params }) {
   const postId = params.postId
   return { postId }
 }
-export const EditPostForm = ({ match }) => {
+export const EditPostForm = () => {
   const { postId } = useLoaderData()
   const post = useSelector((state) =>
     state.posts.find((post) => post.id === postId)
@@ -18,7 +19,7 @@ export const EditPostForm = ({ match }) => {
   const [content, setContent] = useState(post.content)
 
   const dispatch = useDispatch()
-  const history = useHistory()
+  const navigate = useNavigate()
 
   const onTitleChanged = (e) => setTitle(e.target.value)
   const onContentChanged = (e) => setContent(e.target.value)
@@ -26,7 +27,7 @@ export const EditPostForm = ({ match }) => {
   const onSavePostClicked = () => {
     if (title && content) {
       dispatch(postUpdated({ id: postId, title, content }))
-      history.push(`/posts/${postId}`)
+      navigate(`/posts/${postId}`)
     }
   }
 
