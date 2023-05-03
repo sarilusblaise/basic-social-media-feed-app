@@ -4,6 +4,7 @@ import { useLoaderData, Link } from 'react-router-dom-v5-compat'
 import { PostAuthor } from './PostAuthor'
 import { TimeAgo } from './TimeAgo'
 import { ReactionButtons } from './ReactionButtons'
+import { selectPostById } from './postsSlice'
 
 // react-router : for loading data in a route
 export function loader({ params }) {
